@@ -1,17 +1,18 @@
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 
-export default function InputTexto() {
-    const [termoDeBusca, setTermoDeBusca] = useState<string>('')
-    
-    function handleChange(e:React.ChangeEvent<HTMLInputElement>): void{
-        setTermoDeBusca(e.target.value)
-    }
+type InputTextoProps ={
+    termoDeBusca: string;
+    handleChange: ChangeEventHandler<HTMLInputElement>;
+    title: string
+}
+
+export default function InputTexto({title, handleChange, termoDeBusca}:InputTextoProps) {
     
     return (
         <>
             <TextField 
-            label="Pesquisar" 
+            label={title} 
             variant="outlined" 
             sx={{marginY: '16px'}} 
             value={termoDeBusca}

@@ -5,8 +5,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material';
-import { memo } from 'react';
+import { Button, styled } from '@mui/material';
+import { memo, useEffect } from 'react';
 
 type Pessoa = {
     first_name:string;
@@ -24,6 +24,25 @@ const StyledTableCell = styled(TableCell)`
 `;
 
 function Tabela(props: TabelaProps) {
+
+  // useEffect(()=>{
+  //      alert('tabela montada')
+  // },[])
+
+
+  // useEffect(()=>{
+  //      alert(`props alterdas
+  //      primeira pessoa = ${props.pessoas[0].first_name}
+  //      `)
+  // },[props.pessoas[0]])
+
+  useEffect(()=>{
+    if (props.pessoas.length <1) {
+      alert('nenhuma pessoa encontrada')
+    }
+  }, [props.pessoas])
+  
+
   return (
     <TableContainer component={Paper} sx={{ maxHeight: '80vh' }}>
       <Table stickyHeader size="small" >
@@ -37,7 +56,7 @@ function Tabela(props: TabelaProps) {
         <TableBody>
           {props.pessoas.map((pessoa) => (
             <TableRow
-              key={pessoa.first_name}
+              key={pessoa.first_name + pessoa.last_name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="right">{pessoa.first_name}</TableCell>
