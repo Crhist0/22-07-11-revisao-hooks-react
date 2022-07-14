@@ -4,7 +4,7 @@ export type ThemeType = {
 }
 
 const theme = {
-    bg: '#ccc',
+    bg: '#313131',
     color: 'blue'
 };
 

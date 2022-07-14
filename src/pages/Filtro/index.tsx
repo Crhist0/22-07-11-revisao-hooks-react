@@ -1,13 +1,18 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import InputTexto from "../../components/InputTexto";
 import Tabela from "../../components/Tabela";
+import ControlledSwitches from "../../components/ThemeSwitch";
 import DATA from '../../MockData/MOCK_DATA.json'
+import { State } from "../../store";
 
 export default function Filtro() {
     const [termoDeBuscaNome, setTermoDeBuscaNome] = useState<string>('')
     const [termoDeBuscaSobrenome, setTermoDeBuscaSobrenome] = useState<string>('')
     
+    const temperatura = useSelector((state:State)=>state.temperature)
+
     function handleChangeNome(e:React.ChangeEvent<HTMLInputElement>): void{
         setTermoDeBuscaNome(e.target.value)
     }
@@ -22,6 +27,8 @@ export default function Filtro() {
         <Box display='flex' flexDirection='column' alignItems='center'>
 
             <Box display='flex' flexDirection='row' gap={4}>
+                <ControlledSwitches/>
+                <Typography variant="h3">{temperatura}</Typography>
                 <InputTexto title='Pesquisar por nome' handleChange={handleChangeNome} termoDeBusca={termoDeBuscaNome} />
                 <InputTexto title='Pesquisar por sobrenome' handleChange={handleChangeSobrenome} termoDeBusca={termoDeBuscaSobrenome} />
             </Box>

@@ -3,10 +3,11 @@ import thunk from "redux-thunk"
 import reducers from "./modules/rootReducer"
 import persistReducers from './persistReducers'
 import { persistStore } from "redux-persist"
+import { composeWithDevTools } from "redux-devtools-extension"
 
 const store =createStore(
     persistReducers(reducers),
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk))
  )
 
 export const persistor = persistStore(store)

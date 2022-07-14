@@ -3,17 +3,20 @@ import Routers from './Routers';
 import themeDefault from './config/themes/Default';
 import themeDark from './config/themes/Dark';
 import GlobalStyles from './config/styles/GlobalStyles';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './store/store';
+import { State } from './store';
 
 export default function App() {
-    const theme = 1 + 1 === 2 ? themeDark : themeDefault;
+    const theme = useSelector((state:State)=>state.theme)
+    
+    
     return (
-        <Provider store={store}>
-            <ThemeProvider theme={theme}>
+        
+            <ThemeProvider theme={theme === 'light' ? themeDefault : themeDark}>
                 <GlobalStyles fontFamily='Arial' />
                 <Routers/>
             </ThemeProvider>
-        </Provider>        
+    
     );
 };
