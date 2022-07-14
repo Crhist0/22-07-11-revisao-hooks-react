@@ -12,7 +12,9 @@ const GlobalStyles = createGlobalStyle<GlobalProps> `
     }
 
     body {
-        background: ${ ({theme}: GlobalProps) => theme?.bg }
+        background: ${ ({theme}: GlobalProps) => theme?.bg };
+        margin: 0px;
+        padding: 0px;
     }
 `;
 
