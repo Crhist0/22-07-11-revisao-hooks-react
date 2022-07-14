@@ -4,6 +4,7 @@ import Revisao from './pages/Revisao';
 import Atividade from './pages/Atividade';
 import Filtro from './pages/Filtro';
 import Temperatura from './pages/Temperatura';
+import Pokemon from './pages/Pokemon';
 
 export default function Routers() {
     return (
@@ -14,6 +15,7 @@ export default function Routers() {
                 <Route path='/atividade' element={<Atividade/>} />
                 <Route path='/filtro' element={<Filtro/>} />
                 <Route path='/temperatura' element={<Temperatura/>} />
+                <Route path='/pokemon' element={<Pokemon/>} />
             </Routes>
         </BrowserRouter>
     );
