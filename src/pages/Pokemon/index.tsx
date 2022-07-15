@@ -14,7 +14,20 @@ type Pokemon = {
         front_default: string,
         back_default: string
     },
-    types: Array<{slot:number, type: {name: string, url: string}}>
+    types: Array<{
+        slot:number, 
+        type: {
+            name: string, url: string
+        }
+    }>,
+    stats: {
+        base_stat:number,
+        effort: number,
+        stat: {
+            name: string,
+            url: string
+        }
+    }[]
 }
 
 export default function Pokemon() {
@@ -30,16 +43,16 @@ export default function Pokemon() {
       getPokemon(valor)
     }
 
-   useEffect(()=>{
-    console.log(pokemon);
-   },[pokemon])
+//    useEffect(()=>{
+//     console.log(pokemon);
+//    },[pokemon])
     
     return (
         <>
             <Box height='100vh' display='flex' flexDirection='column'  justifyContent='center' alignItems='center' >
 
                 <Paper sx={{
-                    width:'250px', 
+                    width:'450px', 
                     padding: '24px', 
                     borderRadius: '24px', 
                     display: 'flex', 
@@ -53,13 +66,15 @@ export default function Pokemon() {
                     <Button onClick={handleClick}  variant='contained' fullWidth >BUSCAR</Button>
                     <Box display='flex' flexDirection='column'  justifyContent='center' alignItems='center'>
                         <img src={pokemon.sprites.front_default} alt={pokemon.sprites.front_default} />
-                        <Grid container display='flex' justifyContent='space-between'>
+                        <Grid container gap={4} display='flex' justifyContent='space-between'>
                             <Grid item>
+                                <Typography variant='h6' align="center">Pokemon</Typography>
                                 <Typography variant="body1">nome: {pokemon.name}</Typography>
-                                <Typography variant="body1">altura: {pokemon.height}</Typography>
-                                <Typography variant="body1">peso: {pokemon.weight}</Typography>
+                                <Typography variant="body1">altura: {pokemon.height *10} cm</Typography>
+                                <Typography variant="body1">peso: {pokemon.weight/10} kg</Typography>
                             </Grid>
                             <Grid item>
+                                <Typography variant='h6' align="center">Tipos</Typography>
                                 {pokemon.types.map((type)=>{
                                     return (
                                         <>
@@ -70,6 +85,16 @@ export default function Pokemon() {
                                     )
                                 })}
                                 
+                            </Grid>
+                            <Grid item>
+                                <Typography variant='h6' align="center">Stats</Typography>
+                                {pokemon.stats.map((stat)=>{
+                                    return (
+                                    <Typography variant="body1">
+                                        {stat.stat.name}: {stat.base_stat}
+                                    </Typography>
+                                    )
+                                })}
                             </Grid>
                         </Grid>
                     </Box>
