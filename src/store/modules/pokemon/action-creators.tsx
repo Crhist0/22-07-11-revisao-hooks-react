@@ -1,12 +1,19 @@
 import { Dispatch } from "redux"
 import { Action } from "./actions"
+import getPokemonApi from '../../../services/api'
 
-
-export const mudarTheme = (valor: string)=>{
+export const getPokemon = (valor: string | number)=>{
     return (dispatch:Dispatch<Action>)=>{
-        dispatch({
-            type: "change",
-            payload: valor
+        
+        getPokemonApi(valor).then((response:any)=>{
+
+            dispatch({
+                type: "getPokemon",
+                payload: response
+            })
+            
         })
+        
+        
     }
 }

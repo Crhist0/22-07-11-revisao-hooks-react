@@ -6,7 +6,7 @@ const persisted = (reducers:any)=>{
         {
         key: '22-07-13-aula-react-redux',
         storage,
-        whitelist: ['temperature', 'theme']
+        whitelist: ['temperature', 'theme', 'pokemon']
         },
         reducers
     )

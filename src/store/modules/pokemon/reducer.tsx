@@ -1,11 +1,11 @@
 import { Action } from "./actions";
 
-const initialState: string = 'light' 
+const initialState: object = {} 
 
-export default function reducer(state:string = initialState, action:Action) {
+export default function reducer(state:object = initialState, action:Action) {
     
     switch (action.type) {
-        case 'change':
+        case 'getPokemon':
             return action.payload
         default:
             return state;
