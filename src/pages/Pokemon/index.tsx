@@ -65,7 +65,7 @@ export default function Pokemon() {
                     fullWidth  />
                     <Button onClick={handleClick}  variant='contained' fullWidth >BUSCAR</Button>
                     <Box display='flex' flexDirection='column'  justifyContent='center' alignItems='center'>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.sprites.front_default} />
+                        <img src={pokemon.sprites?.front_default} alt={pokemon.sprites?.front_default} />
                         <Grid container gap={4} display='flex' justifyContent='space-between'>
                             <Grid item>
                                 <Typography variant='h6' align="center">Pokemon</Typography>
@@ -75,7 +75,7 @@ export default function Pokemon() {
                             </Grid>
                             <Grid item>
                                 <Typography variant='h6' align="center">Tipos</Typography>
-                                {pokemon.types.map((type)=>{
+                                {pokemon.types?.map((type)=>{
                                     return (
                                         <>
                                             <Typography variant="body1">
@@ -88,7 +88,7 @@ export default function Pokemon() {
                             </Grid>
                             <Grid item>
                                 <Typography variant='h6' align="center">Stats</Typography>
-                                {pokemon.stats.map((stat)=>{
+                                {pokemon.stats?.map((stat)=>{
                                     return (
                                     <Typography variant="body1">
                                         {stat.stat.name}: {stat.base_stat}
