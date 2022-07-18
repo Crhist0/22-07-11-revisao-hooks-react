@@ -5,6 +5,7 @@ import Atividade from './pages/Atividade';
 import Filtro from './pages/Filtro';
 import Temperatura from './pages/Temperatura';
 import Pokemon from './pages/Pokemon';
+import Marvel from './pages/Marvel';
 
 export default function Routers() {
     return (
@@ -16,6 +17,7 @@ export default function Routers() {
                 <Route path='/filtro' element={<Filtro/>} />
                 <Route path='/temperatura' element={<Temperatura/>} />
                 <Route path='/pokemon' element={<Pokemon/>} />
+                <Route path='/marvel' element={<Marvel/>} />
             </Routes>
         </BrowserRouter>
     );

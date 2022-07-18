@@ -2,7 +2,7 @@ import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import getPokemon from "../../services/api";
+import getPokemon from "../../services/pokemon/api";
 import { pokemonActionCreators, State } from "../../store";
 
 type Pokemon = {
