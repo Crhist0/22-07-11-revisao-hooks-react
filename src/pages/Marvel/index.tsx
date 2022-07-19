@@ -9,7 +9,19 @@ type marvelReduxType = {
     attributionText: string;
     code: number;
     copyright: string;
-    data: object;
+    data: {
+        offset: number
+        limit: number
+        total: number
+        count: number
+        results: {
+            name:string
+            thumbnail: {
+                path: string,
+                extension: string
+            }
+        }[]
+    };
     etag:  string;
     status: string;
 }
@@ -49,12 +61,23 @@ export default function Marvel() {
                     onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setValor(e.target.value)}} 
                     fullWidth  />
                     <Button onClick={handleClick}  variant='contained' fullWidth >Search</Button>
-                    <Box display='flex' flexDirection='column'  justifyContent='center' alignItems='center'>
-                        {/* <img src={pokemon.sprites?.front_default} alt={pokemon.sprites?.front_default} /> */}
-                    </Box>
-                    <Pagination sx={{
-                        '& .MuiPagination-ul':{justifyContent: 'space-between'}}} count={10} page={page} onChange={handleChange} />
-                    <Box sx={{display: 'flex', justifyContent: 'center'}} dangerouslySetInnerHTML={{__html: marvelRedux.attributionHTML}} />
+                    {marvelRedux.code === 200 && 
+                              <>
+                              <Box display='flex' flexDirection='column'  justifyContent='center' alignItems='center'>
+                                  <Typography>{marvelRedux.data.results[0].name}</Typography>
+                                  <img 
+                                  src={marvelRedux.data.results[0].thumbnail.path + '.' + marvelRedux.data.results[0].thumbnail.extension}
+                                  alt={marvelRedux.data.results[0].name}
+                                  />
+                              </Box>
+                              <Pagination sx={{
+                                  '& .MuiPagination-ul':{justifyContent: 'space-between'}}} 
+                                  count={Math.ceil(marvelRedux.data.total/marvelRedux.data.limit)} 
+                                  page={page} 
+                                  onChange={handleChange} />
+                              <Box sx={{display: 'flex', justifyContent: 'center'}} 
+                              dangerouslySetInnerHTML={{__html: marvelRedux.attributionHTML}} />
+                              </>}
                 </Paper>
 
             </Box>
